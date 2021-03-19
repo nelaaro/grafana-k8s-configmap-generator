@@ -20,7 +20,7 @@ with open(dashboardjsonfile, 'r') as inputfile:
 
     inputfilename = inputfile.name
     dashboardname = inputfilename.strip(('.json'))
-    outputfilename = dashboardname + '.yaml'
+    outputfilename = './' + dashboardname + '.yaml'
     yaml_str = {
         'apiVersion': 'v1',
         'kind': 'ConfigMap',
