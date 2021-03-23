@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3.7
 
 import ruamel.yaml
 import argparse
@@ -23,12 +23,12 @@ with open(dashboardjsonfile, 'r') as inputfile:
     outputfilename = './' + dashboardname + '.yaml'
     yaml_str = {
         'apiVersion': 'v1',
-        'data':{inputfilename: literal(inputfile.read())},
         'kind': 'ConfigMap',
         'metadata':{'labels':{'grafana_dashboard': 'true'},
                     'name': dashboardname,
                     'namespace': namespace
-                    }
+                    },
+        'data':{inputfilename: literal(inputfile.read())}
     }
     with open(outputfilename, 'w') as outputfile:
         dashboard_yaml = yaml.dump(yaml_str, outputfile)
